@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Windows 11 in React!
 
 [![Follow me](https://img.shields.io/github/followers/blueedgetechno?label=follow%20me&style=social)](https://github.com/blueedgetechno)
@@ -95,3 +96,6 @@ To use docker use the following command ``` docker run -d  --restart unless-stop
 ## License
 
 ⚖️ CC0-1.0 License
+=======
+
+>>>>>>> c385595fcd764a6c41c5cd990a2c9db8b9ceed02
