@@ -51,20 +51,8 @@ export const MicroStore = ()=>{
           <div className="storeSection w-full absolute top-0">
             <Image id="sthome" className="frontPage w-full" src="store/lucacover"/>
             <div className="panelName absolute m-6 text-xl top-0">Home</div>
-            <div className="w-full overflow-x-scroll noscroll overflow-y-hidden -mt-16">
-              <div className="storeRibbon">
-                {ribbon && ribbon.map(x=>{
-                  return x=="unescape"?(
-                    <a href="https://blueedge.me/unescape" target="_blank">
-                    <Image className="mx-1 dpShad rounded overflow-hidden"
-                            var={x} h={100} dir="store/float" src={x}/>
-                    </a>
-                  ):(
-                    <Image className="mx-1 dpShad rounded overflow-hidden"
-                            var={x} h={100} dir="store/float" src={x}/>
-                  )
-                })}
-              </div>
+            <div className="w-full overflow-x-scroll thinScroll overflow-y-hidden -mt-16">
+        
             </div>
             <div id="apprib" className="frontCont amzApps my-8 py-20 w-auto mx-8 flex justify-between noscroll overflow-x-scroll overflow-y-hidden">
               <div className="flex w-64 flex-col text-gray-100 h-full px-8">
@@ -143,7 +131,7 @@ export const MicroStore = ()=>{
                         <Icon className={stars>4?"bluestar":""} fafa="faStar" width={6}/>
                         <div className="text-xss text-gray-800">{1+x.charCodeAt(3)%5}k</div>
                       </div>
-                      <div className="text-xss mt-8">{x.charCodeAt(4)%2?"Free":"Owned"}</div>
+                      <div className="text-xss mt-8">{x.charCodeAt(4)%2?"Rent":"Owned"}</div>
                     </div>
                   )
                 })}

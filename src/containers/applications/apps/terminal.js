@@ -12,7 +12,7 @@ export const WnTerminal = ()=>{
     "(c) Microsoft Corporation. All rights reserved.",
     ""
   ]);
-  const [pwd, setPwd] = useState("C:\\Users\\Blue");
+  const [pwd, setPwd] = useState("C:\\Users\\Idrees");
   const [lastCmd, setLsc] = useState(0);
   const [wntitle, setWntitle] = useState("Windows Terminal");
 
@@ -144,20 +144,20 @@ export const WnTerminal = ()=>{
     }else if (type=="title") {
       setWntitle(arg.length?arg:"Windows Terminal");
     }else if (type=="hostname") {
-      tmpStack.push("Blue");
+      tmpStack.push("Idrees");
     }else if (type=="ver") {
       tmpStack.push("Microsoft Windows [Version 10.0.22000.51]");
     }else if (type=="systeminfo") {
       var dvInfo = [
-        "Host Name:                 BLUE",
-        "OS Name:                   Microsoft Windows 11 Home Single Language",
+        "Host Name:                 Idrees",
+        "OS Name:                   Microsoft Windows 11 Professional",
         "OS Version:                10.0.22000 N/A Build 22000.51",
         "OS Manufacturer:           Microsoft Corporation",
         "OS Configuration:          Standalone Workstation",
         "OS Build Type:             Multiprocessor Free",
-        "Registered Owner:          Blue",
+        "Registered Owner:          Idrees",
         "Registered Organization:   N/A",
-        "Product ID:                7H1S1-5AP1R-473DV-3R5I0N"
+        "Product ID:                7H1S1-5SP1R-473DV-3A5I0N"
       ];
 
       for (var i = 0; i < dvInfo.length; i++) {
@@ -183,6 +183,8 @@ export const WnTerminal = ()=>{
       for (var i = 0; i < helpArr.length; i++) {
         tmpStack.push(helpArr[i]);
       }
+    }else if (type=="") {
+
     }else{
       tmpStack.push(`'${type}' is not recognized as an internal or external command,`);
       tmpStack.push("operable program or batch file.")
@@ -190,7 +192,7 @@ export const WnTerminal = ()=>{
       tmpStack.push("Type \"help\" for available commands")
     }
 
-    tmpStack.push("");
+    if(type.length>0) tmpStack.push("");
     setStack(tmpStack);
   }
 
@@ -275,7 +277,7 @@ export const WnTerminal = ()=>{
               <div className="cmdLine actmd">
                 {pwd}>
                 <div className="ipcmd" id="curcmd" contentEditable
-                  data-action="enter" onKeyDown={action}></div>
+                  data-action="enter" onKeyDown={action} spellCheck="false"></div>
                 {/* <input id="curcmd" className="ipcmd" type="text" defaultValue="tyler"/> */}
               </div>
             </div>

@@ -19,7 +19,7 @@ export const StartMenu = () => {
       });
     }
 
-    for (var i = 0; i < arr.rcApps.length; i++) {
+    for (i = 0; i < arr.rcApps.length; i++) {
       if (arr.rcApps[i].lastUsed < 0) {
         arr.rcApps[i].lastUsed = "Recently Added"
       } else if (arr.rcApps[i].lastUsed < 10) {
@@ -35,11 +35,11 @@ export const StartMenu = () => {
       allApps = [];
     tmpApps.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
 
-    for (var i = 0; i < 27; i++) {
+    for (i = 0; i < 27; i++) {
       allApps[i] = [];
     }
 
-    for (var i = 0; i < tmpApps.length; i++) {
+    for (i = 0; i < tmpApps.length; i++) {
       var t1 = tmpApps[i].name.trim().toUpperCase().charCodeAt(0);
       if (t1 > 64 && t1 < 91) {
         allApps[t1 - 64].push(tmpApps[i]);
@@ -55,6 +55,7 @@ export const StartMenu = () => {
   const [query, setQuery] = useState("");
   const [match, setMatch] = useState({});
   const [atab, setTab] = useState("All");
+  // const [pwctrl, setPowCtrl] = useState
 
   const dispatch = useDispatch();
   const tabSw = (e)=>{
@@ -213,11 +214,28 @@ export const StartMenu = () => {
         <div className="menuBar">
           <div className="profile handcr">
             <Icon src="blueProf" ui rounded width={26}
-              click="EXTERNAL" payload="https://blueedge.me"/>
-            <div className="usName">Blue Edge</div>
+              click="EXTERNAL" payload="https://github.com/malikidreeshasankhan"/>
+            <div className="usName">Malik Idrees Hasan Khan</div>
           </div>
-          <div className="powerCtrl">
-            <Icon src="power" ui width={14} invert/>
+          <div className="relative">
+            <div className="powerCont" data-vis={start.pwctrl}>
+              <div className="flex prtclk" onClick={clickDispatch}
+                data-action="WALLSHUTDN">
+                <Icon msi="PowerButton" width={12}/>
+                <span>Shut down</span>
+              </div>
+              <div className="flex prtclk" onClick={clickDispatch}
+                data-action="WALLRESTART">
+                <Icon msi="Refresh" width={12} flip/>
+                <span>Restart</span>
+              </div>
+              <div className="flex prtclk" onClick={clickDispatch}
+                data-action="WALLALOCK">
+                <Icon msi="Lock" width={12}/>
+                <span>Lock</span>
+              </div>
+            </div>
+            <Icon msi="PowerButton" width={14} click="STARTPWC"/>
           </div>
         </div>
       </>):(
@@ -447,7 +465,7 @@ export const WidPane = () => {
 
   return (
     <div className="widPaneCont" data-hide={widget.hide} style={{'--prefix':'WIDG'}}>
-      <div className="WidPane" loading="lazy">
+      <div className="WidPane thinScroll" loading="lazy">
         <div className="widtop">
           <Icon fafa="faEllipsisH" width={12}/>
         </div>
@@ -577,10 +595,10 @@ export const WidPane = () => {
             <div className="allNewsCont">
               {[...widget.data.news].splice(4, widget.data.news.length).map((article, i)=>{
                 return (
-                  <div className="articleCont ltShad" key={i} style={{
+                  <a className="articleCont ltShad" key={i} style={{
                     '--backgrad': getRandom(2),
                     backgroundImage: `url(${article.urlToImage})`
-                  }}>
+                  }} href={article.url} target="_blank">
                     <div className="tpNews">
                       <div className="tpSource">{article.source.name}</div>
                       <div className="tpArticle">{article.title}</div>
@@ -588,7 +606,7 @@ export const WidPane = () => {
                         <div className="tpdesc">{article.content}</div>:
                         null}
                     </div>
-                  </div>
+                  </a>
                 )
               })}
             </div>
@@ -603,7 +621,19 @@ export const CalnWid = () => {
   const sidepane = useSelector(state => state.sidepane);
   const [loaded, setLoad] = useState(false);
 
- 
+  useEffect(() => {
+    if (!loaded) {
+      setLoad(true);
+      window.dycalendar.draw({
+        target: '#dycalendar',
+        type: 'month',
+        dayformat: 'ddd',
+        monthformat: "full",
+        prevnextbutton: 'show',
+        highlighttoday: true
+      });
+    }
+  })
 
   return (
     <div className="calnpane dpShad" data-hide={sidepane.calhide}

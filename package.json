@@ -1,7 +1,7 @@
 {
   "name": "windows11",
   "description": "Windows 11 made in React",
-  "homepage": "https://malikidreeshasankhan.github.io/win11react",
+  "repository": "https://malikidrreeshasankhan.github.io/11react2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,11 +12,13 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@widgetbot/react-embed": "^1.4.0",
     "axios": "^0.21.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-canvas-draw": "^1.1.1",
     "react-dom": "^17.0.2",
+    "react-player": "^2.9.0",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
@@ -26,8 +28,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -49,8 +49,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.2.3"
   }
 }

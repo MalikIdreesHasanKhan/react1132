@@ -1,8 +1,8 @@
 name: Generate Preview2
 
 on:
-  pull_request:
-    types: [assigned, synchronize, reopened, edited]
+  pull_request_target:
+    types: [synchronize, reopened, edited]
 
   
   
@@ -14,20 +14,15 @@ jobs:
     steps:
     
         
-    - uses: actions/checkout@v1
       # Find the PR associated with this push, if there is one.
       # This will echo "Your PR is 7", or be skipped if there is no current PR.
     - run: echo "Your PR is ${PR_NUMBER}"
       env:
        PR_NUMBER: ${{ github.event.pull_request.number }}
     
-    - name: Checkout code
-      uses: actions/checkout@v2
-    
-    - name: Sleep for 40 seconds
-      uses: jakejarvis/wait-action@master
+    - uses: actions/checkout@v2
       with:
-        time: '40s'
+        ref: "refs/pull/${{ github.event.pull_request.number }}/merge"
 
     - name: Install Node.js
       uses: actions/setup-node@v1
@@ -71,8 +66,13 @@ jobs:
       with:
         time: '120s'
         
-    - name: Comment PR
-      uses: thollander/actions-comment-pull-request@master
+    - name: pr
+      uses: mshick/add-pr-comment@v1
+      env:
+          BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GITHUB_TOKEN: ${{ secrets.BOT }}
       with:
-         message: 'Deploy Preview has been updated !'
-         GITHUB_TOKEN: ${{ secrets.BOT }}
+        message: |
+            ✔️ Deploy Preview Updated! 
+            🔍 Inspect the deploy log: ${{ env.BUILD_URL }}
+        allow-repeats: true

@@ -22,7 +22,7 @@ export const AboutWin = ()=>{
   return open || abOpen?(
     <div className="aboutApp floatTab dpShad">
       <div className="py-1 px-2 bg-gray-100 text-xss">
-        <div className="">About Windows</div>
+        <div className="">About Windows 11</div>
       </div>
       <div className="windowScreen flex flex-col" data-dock="true">
         <div className="restWindow h-full flex-grow flex flex-col items-center p-4">
@@ -32,23 +32,21 @@ export const AboutWin = ()=>{
           <div className="abCont">
             <div>Microsoft Windows (in React)</div>
             <div>Version 21H2 (OS Build 22000.51)</div>
-            <div>&copy; Blue Edge. All rights reserved.</div>
+            <div>&copy; Malik Idrees Hasan Khan. All rights reserved.</div>
             <br/>
             <div>
-              The Windows 11 Home Single Language Operating System and its user
+              The Windows 11 Pro Operating System and its user
               interface are protected by the trademark and other pending or
               existing intellectual property rights in the United States and other
-              countries/regions.
+              countries/regions and are exclusive Property of Microsoft.
             </div>
             <br/>
             <br/>
-            <div>
-              This product is licensed with <a target="_blank" href="https://github.com/blueedgetechno/windows11/blob/master/LICENSE">Creative Commons</a>.
-            </div>
+           
             <div className="mt-1">
               &nbsp;&nbsp;
               &nbsp;&nbsp;
-              contact: <a target="_blank" href="mailto:blueedgetechno@gmail.com">blueedgetechno@gmail.com</a>
+              contact: <a target="_blank" href="mailto:pencilartassault@hotmail.com">pencilartassault@hotmail.com</a>
             </div>
             <br/>
             <br/>
